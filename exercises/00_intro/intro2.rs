@@ -8,5 +8,5 @@
 // I AM NOT DONE
 
 fn main() {
-    printline!("Hello there!")
+    println!("Hello there!"); // On remplace printline! par println!. On ajoute aussi ; a la fin de la ligne pour marqué la fin de notre commande
 }
