@@ -8,6 +8,6 @@
 fn main() {
     let number = "T-H-R-E-E"; // don't change this line
     println!("Spell a Number : {}", number);
-    number = 3; // don't rename this variable
+    let number = 3; // don't rename this variable || On ajoute "let" au début afin d'initialiser la variable number avec pour type i32 (integer)
     println!("Number plus two is : {}", number + 2);
 }
