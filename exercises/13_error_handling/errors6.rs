@@ -8,10 +8,11 @@
 //
 // Execute `rustlings hint errors6` or use the `hint` watch subcommand for a
 // hint.
-
+// Pour executer ce test, il faut faire cargo new primitive_types6 --bin, modifier le fichier src/main.rs et exécuter cargo test
 // I AM NOT DONE
 
 use std::num::ParseIntError;
+use std::fmt;
 
 // This is a custom error type that we will be using in `parse_pos_nonzero()`.
 #[derive(PartialEq, Debug)]
@@ -20,19 +21,30 @@ enum ParsePosNonzeroError {
     ParseInt(ParseIntError),
 }
 
-impl ParsePosNonzeroError {
-    fn from_creation(err: CreationError) -> ParsePosNonzeroError {
+impl From<CreationError> for ParsePosNonzeroError {
+    fn from(err: CreationError) -> Self {
         ParsePosNonzeroError::Creation(err)
     }
-    // TODO: add another error conversion function here.
-    // fn from_parseint...
+}
+
+impl From<ParseIntError> for ParsePosNonzeroError {
+    fn from(err: ParseIntError) -> Self { // On ajoute notre deuxieme erreur en rapport a ParseInt
+        ParsePosNonzeroError::ParseInt(err)
+    }
+}
+
+impl fmt::Display for ParsePosNonzeroError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ParsePosNonzeroError::Creation(creation_err) => write!(f, "Creation error: {:?}", creation_err),
+            ParsePosNonzeroError::ParseInt(parse_int_err) => write!(f, "ParseInt error: {:?}", parse_int_err),
+        }
+    }
 }
 
 fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroError> {
-    // TODO: change this to return an appropriate error instead of panicking
-    // when `parse()` returns an error.
-    let x: i64 = s.parse().unwrap();
-    PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
+    let x: i64 = s.parse()?;
+    PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from)
 }
 
 // Don't change anything below this line.
@@ -92,3 +104,4 @@ mod test {
         assert_eq!(parse_pos_nonzero("42"), Ok(x.unwrap()));
     }
 }
+
