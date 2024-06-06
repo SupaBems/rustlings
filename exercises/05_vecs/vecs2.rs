@@ -6,7 +6,7 @@
 // Make me pass the test!
 //
 // Execute `rustlings hint vecs2` or use the `hint` watch subcommand for a hint.
-
+// Pour executer ce test, il faut faire cargo new primitive_types6 --bin, modifier le fichier src/main.rs et exécuter cargo test
 // I AM NOT DONE
 
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
