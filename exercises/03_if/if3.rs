@@ -1,7 +1,7 @@
 // if3.rs
 //
 // Execute `rustlings hint if3` or use the `hint` watch subcommand for a hint.
-
+// Afin d'executer le test, on lance la commande cargo new if3 --bin, puis on modifie le fichier if3/src/main.rs. Ensuite on lance cargo test
 // I AM NOT DONE
 
 pub fn animal_habitat(animal: &str) -> &'static str {
