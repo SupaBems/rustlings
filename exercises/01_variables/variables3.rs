@@ -6,6 +6,6 @@
 // I AM NOT DONE
 
 fn main() {
-    let x: i32;
+    let x: i32=100; // On initialize la varible x. Ici on lui attribue la valeur 100.
     println!("Number {}", x);
 }
