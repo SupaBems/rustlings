@@ -8,6 +8,6 @@
 // I AM NOT DONE
 
 fn main() {
-    x = 5;
+    let x = 5; // On ajoute let avant x qui permet de définir une variable
     println!("x has the value {}", x);
 }
