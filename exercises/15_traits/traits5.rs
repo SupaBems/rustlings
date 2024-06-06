@@ -29,12 +29,15 @@ impl OtherTrait for SomeStruct {}
 impl SomeTrait for OtherStruct {}
 impl OtherTrait for OtherStruct {}
 
-// YOU MAY ONLY CHANGE THE NEXT LINE
-fn some_func(item: ??) -> bool {
+// On a modifier la fonction qu'ell accepte tous les type qui implemente SomeTrait et OtherTrait
+fn some_func<T>(item: &T) -> bool
+where
+    T: SomeTrait + OtherTrait,
+{
     item.some_function() && item.other_function()
 }
 
-fn main() {
-    some_func(SomeStruct {});
-    some_func(OtherStruct {});
+fn main() { //on rajoute & pour SomeStruct et OtherStruct afin de faire un emprunt
+    some_func(&SomeStruct {});
+    some_func(&OtherStruct {});
 }
