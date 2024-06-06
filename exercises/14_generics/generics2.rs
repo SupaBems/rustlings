@@ -5,15 +5,15 @@
 //
 // Execute `rustlings hint generics2` or use the `hint` watch subcommand for a
 // hint.
-
+// Pour executer ce test, il faut faire cargo new generics2 --bin, modifier le fichier src/main.rs et exécuter cargo test
 // I AM NOT DONE
 
-struct Wrapper {
-    value: u32,
+struct Wrapper<T> { // On ajoute le parametre <T> qui représente n'importe quel type
+    value: T, // value est de type T
 }
 
-impl Wrapper {
-    pub fn new(value: u32) -> Self {
+impl<T> Wrapper<T> { // la methode impl <T> Wrapper<T> peut fonctionner avec tous les types
+    pub fn new(value: T) -> Self {
         Wrapper { value }
     }
 }
